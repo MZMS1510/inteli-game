@@ -15,19 +15,25 @@ export class Game extends Scene {
     // });
   }
 
-  update() {
+  update(time, delta) {
+    const speed = 500;
+    const movement = speed * (delta / 1000);
+
+    // Movimento vertical
     if (this.input.keyboard.addKey("W").isDown) {
-      this.player.y -= 5;
+      this.player.y -= movement;
     } else if (this.input.keyboard.addKey("S").isDown) {
-      this.player.y += 5;
+      this.player.y += movement;
     }
 
+    // Movimento horizontal
     if (this.input.keyboard.addKey("A").isDown) {
-      this.player.x -= 5;
+      this.player.x -= movement;
     } else if (this.input.keyboard.addKey("D").isDown) {
-      this.player.x += 5;
+      this.player.x += movement;
     }
 
-    this.cameras.main.centerOn(this.player.x, this.player.y);
+    // Faz a câmera seguir o jogador
+    // this.cameras.main.centerOn(this.player.x, this.player.y);
   }
 }
