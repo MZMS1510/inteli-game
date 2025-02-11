@@ -17,6 +17,8 @@ export class Game extends Scene {
     // Creates the player in the scene
     this.player.spawn(640, 360);
 
+    this.player.play("idle");
+
     // this.input.once("pointerdown", () => {
     //   this.scene.start("GameOver");
     // });
