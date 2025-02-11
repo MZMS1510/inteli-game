@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { Player } from "../classes/player";
 
 export class Preloader extends Scene {
   constructor() {
@@ -6,27 +7,25 @@ export class Preloader extends Scene {
   }
 
   init() {
-    //  A simple progress bar. This is the outline of the bar.
+    // Cria uma barra de progresso simples. Aqui fica
     this.add.rectangle(512, 384, 468, 32).setStrokeStyle(1, 0xffffff);
 
-    //  This is the progress bar itself. It will increase in size from the left based on the % of progress.
+    // A barra de progresso em si
     const bar = this.add.rectangle(512 - 230, 384, 4, 28, 0xffffff);
 
-    //  Use the 'progress' event emitted by the LoaderPlugin to update the loading bar
+    // usa o evento "progress" para atualizar a barrinha de progresso
     this.load.on("progress", (progress) => {
-      //  Update the progress bar (our bar is 464px wide, so 100% = 464px)
+      //  Atualiza a barra de progresso (a barra tem 464px de largura, então 100% = 464px)
       bar.width = 4 + 460 * progress;
     });
   }
 
   preload() {
-    //  Define o caminho base para carregar os arquivos
+    // Define o caminho base para carregar os arquivos
     this.load.setPath("assets");
 
-    this.load.spritesheet("player", "player.png", {
-      frameWidth: 48,
-      frameHeight: 48,
-    });
+    this.player = new Player(this);
+    this.player.preload();
   }
 
   create() {

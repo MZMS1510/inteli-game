@@ -1,14 +1,21 @@
 import { Scene } from "phaser";
+import { Player } from "../classes/player";
 
 export class Game extends Scene {
   constructor() {
     super("Game");
   }
 
+  preload() {
+    this.player = new Player(this);
+    this.player.preload();
+  }
+
   create() {
     this.cameras.main.setBackgroundColor(0x00ff00);
 
-    this.player = this.add.sprite(640, 360, "player").setScale(5, 5);
+    // Creates the player in the scene
+    this.player.spawn(640, 360);
 
     // this.input.once("pointerdown", () => {
     //   this.scene.start("GameOver");
@@ -16,22 +23,8 @@ export class Game extends Scene {
   }
 
   update(time, delta) {
-    const speed = 500;
-    const movement = speed * (delta / 1000);
-
-    // Movimento vertical
-    if (this.input.keyboard.addKey("W").isDown) {
-      this.player.y -= movement;
-    } else if (this.input.keyboard.addKey("S").isDown) {
-      this.player.y += movement;
-    }
-
-    // Movimento horizontal
-    if (this.input.keyboard.addKey("A").isDown) {
-      this.player.x -= movement;
-    } else if (this.input.keyboard.addKey("D").isDown) {
-      this.player.x += movement;
-    }
+    // Executa o método de atualização do jogador
+    this.player.update(time, delta);
 
     // Faz a câmera seguir o jogador
     // this.cameras.main.centerOn(this.player.x, this.player.y);
