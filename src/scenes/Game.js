@@ -10,6 +10,8 @@ export class Game extends Scene {
 
     this.player = this.add.sprite(640, 360, "player").setScale(5, 5);
 
+    this.player.play("idle");
+
     // this.input.once("pointerdown", () => {
     //   this.scene.start("GameOver");
     // });
