@@ -6,10 +6,8 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    this.add.image(512, 384, "background");
-
     this.add
-      .text(512, 460, "Martians", {
+      .text(640, 360, "Marsians", {
         fontFamily: "Arial Black",
         fontSize: 38,
         color: "#ffffff",
