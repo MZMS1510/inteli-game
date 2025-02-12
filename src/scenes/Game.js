@@ -17,8 +17,6 @@ export class Game extends Scene {
     // Creates the player in the scene
     this.player.spawn(640, 360);
 
-    this.player.play("idle");
-
     // this.input.once("pointerdown", () => {
     //   this.scene.start("GameOver");
     // });
@@ -27,8 +25,5 @@ export class Game extends Scene {
   update(time, delta) {
     // Executa o método de atualização do jogador
     this.player.update(time, delta);
-
-    // Faz a câmera seguir o jogador
-    // this.cameras.main.centerOn(this.player.x, this.player.y);
   }
 }

@@ -35,14 +35,13 @@ export class Preloader extends Scene {
     this.anims.create({
       key: "idle",
       frameRate: 2,
-      frames: this.anims.generateFrameNumbers("player", {start: 0, end: 1}),
-      repeat: 400
+      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 1 }),
+      repeat: 400,
     });
 
     // let player = this.add.sprite(640, 360, "player");
-    
 
     //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-    this.scene.start("MainMenu");
+    this.scene.start("Game");
   }
 }
