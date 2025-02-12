@@ -37,8 +37,29 @@ export class Preloader extends Scene {
     this.anims.create({
       key: "idle",
       frameRate: 2,
-      frames: this.anims.generateFrameNumbers("player", { start: 0, end: 1 }),
-      repeat: 400,
+      frames: this.anims.generateFrameNumbers("player", {start: 0, end: 1 }),
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "forward",
+      frameRate: 4,
+      frames: this.anims.generateFrameNumbers("player", {start: 2, end: 5}),
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "backward",
+      frameRate: 4,
+      frames: this.anims.generateFrameNumbers("player", {start: 6, end: 9}),
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "side",
+      frameRate: 4,
+      frames: this.anims.generateFrameNumbers("player", {start: 2, end: 5}),
+      repeat: -1,
     });
 
     //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
