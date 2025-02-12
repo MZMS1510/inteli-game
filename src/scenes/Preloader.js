@@ -35,30 +35,44 @@ export class Preloader extends Scene {
     // animação de respirar parado
 
     this.anims.create({
-      key: "idle",
+      key: "idle-down",
       frameRate: 2,
       frames: this.anims.generateFrameNumbers("player", {start: 0, end: 1 }),
       repeat: -1,
     });
 
     this.anims.create({
-      key: "forward",
+      key: "walk-down",
       frameRate: 4,
       frames: this.anims.generateFrameNumbers("player", {start: 2, end: 5}),
       repeat: -1,
     });
 
     this.anims.create({
-      key: "backward",
-      frameRate: 4,
-      frames: this.anims.generateFrameNumbers("player", {start: 6, end: 9}),
+      key: "idle-up",
+      frameRate: 2,
+      frames: this.anims.generateFrameNumbers("player", {start: 6, end: 7}),
       repeat: -1,
     });
 
     this.anims.create({
-      key: "side",
+      key: "walk-up",
       frameRate: 4,
-      frames: this.anims.generateFrameNumbers("player", {start: 2, end: 5}),
+      frames: this.anims.generateFrameNumbers("player", {start: 8, end: 11}),
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "idle-side",
+      frameRate: 2,
+      frames: this.anims.generateFrameNumbers("player", {start: 12, end: 13}),
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: "walk-side",
+      frameRate: 4,
+      frames: this.anims.generateFrameNumbers("player", {start: 14, end: 17}),
       repeat: -1,
     });
 

@@ -50,22 +50,33 @@ export class Player {
     // Cálculo de movimento
     let direction = new Phaser.Math.Vector2();
 
-    // Direção vertical
-    if (this.scene.input.keyboard.addKey("W").isDown) {
-      direction.y = -1;
-    } else if (this.scene.input.keyboard.addKey("S").isDown) {
-      direction.y = 1;
-    } else {
-      direction.y = 0;
-    }
-
     // Direção horizontal
     if (this.scene.input.keyboard.addKey("A").isDown) {
       direction.x = -1;
+      this.sprite.setFlipX(false)
+      this.sprite.play("walk-side");
     } else if (this.scene.input.keyboard.addKey("D").isDown) {
       direction.x = 1;
+      this.sprite.setFlipX(true)
+      this.sprite.play("walk-side")
     } else {
       direction.x = 0;
+    }
+
+    // Direção vertical
+    if (this.scene.input.keyboard.addKey("W").isDown) {
+      direction.y = -1;
+      this.sprite.play("walk-up");
+    } else if (this.scene.input.keyboard.addKey("S").isDown) {
+      direction.y = 1;
+      this.sprite.play("walk-down")
+    } else {
+      if (this.sprite.anims.getName() == "walk-up") {
+        this.sprite.play("idle-up")
+      } else if (this.sprite.anims.getName() == "walk-down") {
+        this.sprite.play("idle-down")
+      }
+      direction.y = 0;
     }
 
     let velocity = new Phaser.Math.Vector2();
