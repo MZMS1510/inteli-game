@@ -32,14 +32,14 @@ export class Preloader extends Scene {
     // Quando todos os recursos tiverem sido carregados, muitas vezes vale a pena criar objetos globais aqui que o resto do jogo pode usar.
     // Por exemplo, você pode definir animações globais aqui, para que possamos usá-las em outras cenas.
 
+    // animação de respirar parado
+
     this.anims.create({
       key: "idle",
       frameRate: 2,
       frames: this.anims.generateFrameNumbers("player", { start: 0, end: 1 }),
       repeat: 400,
     });
-
-    // let player = this.add.sprite(640, 360, "player");
 
     //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
     this.scene.start("Game");
