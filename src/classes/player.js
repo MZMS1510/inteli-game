@@ -16,7 +16,7 @@ export class Player {
   }
 
   preload() {
-    this.scene.load.spritesheet("player", "player.png", {
+    this.scene.load.spritesheet("player", "astronauta.png", {
       frameWidth: 48,
       frameHeight: 48,
     });
