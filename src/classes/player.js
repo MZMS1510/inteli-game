@@ -52,31 +52,38 @@ export class Player {
 
     // Direção horizontal
     if (this.scene.input.keyboard.addKey("A").isDown) {
-      direction.x = -1;
-      this.sprite.setFlipX(false)
-      this.sprite.play("walk-side");
+      direction.x = -1; // Movimento horizontal para esquerda
+      this.sprite.setFlipX(false); // Vira o sprite para a esquerda
+      this.sprite.play("walk-side", true);
     } else if (this.scene.input.keyboard.addKey("D").isDown) {
-      direction.x = 1;
-      this.sprite.setFlipX(true)
-      this.sprite.play("walk-side")
+      direction.x = 1; // Movimento horizontal para direita
+      this.sprite.setFlipX(true); // Vira o sprite para a direita
+      this.sprite.play("walk-side", true);
     } else {
-      direction.x = 0;
+      direction.x = 0; // Sem movimento horizontal
     }
 
     // Direção vertical
     if (this.scene.input.keyboard.addKey("W").isDown) {
-      direction.y = -1;
-      this.sprite.play("walk-up");
+      direction.y = -1; // Movimento vertical para cima
+      this.sprite.play("walk-up", true);
     } else if (this.scene.input.keyboard.addKey("S").isDown) {
-      direction.y = 1;
-      this.sprite.play("walk-down")
+      direction.y = 1; // Movimento vertical para baixo
+      this.sprite.play("walk-down", true);
     } else {
-      if (this.sprite.anims.getName() == "walk-up") {
-        this.sprite.play("idle-up")
+      direction.y = 0; // Sem movimento vertical
+    }
+
+    // Animações parado
+    if (direction.length() === 0) {
+      // Verifica se o jogador não está indo para nenhuma direção
+      if (this.sprite.anims.getName() == "walk-side") {
+        this.sprite.play("idle-side", true);
+      } else if (this.sprite.anims.getName() == "walk-up") {
+        this.sprite.play("idle-up", true);
       } else if (this.sprite.anims.getName() == "walk-down") {
-        this.sprite.play("idle-down")
+        this.sprite.play("idle-down", true);
       }
-      direction.y = 0;
     }
 
     let velocity = new Phaser.Math.Vector2();
@@ -84,9 +91,11 @@ export class Player {
     // Normaliza o Vetor para não ter movimento diagonal mais rápido que o normal
     direction.normalize();
 
+    // Cálculo de velocidade
     velocity.x = direction.x * this.speed * delta;
     velocity.y = direction.y * this.speed * delta;
 
+    // Função de velocidade do Phaser que move o jogador
     this.sprite.body.setVelocity(velocity.x, velocity.y);
   }
 
